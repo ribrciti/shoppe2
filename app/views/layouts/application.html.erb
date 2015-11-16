@@ -6,9 +6,25 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<div id="main_navigation">
+	<%= link_to "Shoppe2 Logo Here", root_path %> 
+	<nav>		
+		<%= link_to "Add New Item", new_product_path %>
+		<a href="#">Categories</a>
+		<a href="#">Sign In</a>
+		<a href="#">My Cart</a>			
+	</nav>
+</div>
+	
+<body>
+	<% if notice %>
+		<p class="notice"><%= notice %></p>
+	<% elsif alert %>
+		<p class="alert"><%= alert %></p>
+	<% end %>
+
+	<%= yield %>
 
 </body>
 </html>

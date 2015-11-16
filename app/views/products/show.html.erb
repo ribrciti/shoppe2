@@ -1,0 +1,25 @@
+<div id="background">
+	
+	<h2>Product Specifications</h2>
+	
+	<div id="background_image">
+		<ul><%= image_tag "#{@product.id}.jpg", size: "275x275", alt: "##{@product.id} Photo Missing" %></ul>
+	</div>	
+		<ul><strong><%= @product.name %> Rotary Phone</strong></ul>
+		<ul>
+			Item #:  <%= @product.sku %>
+			Sale Price $ <%= (@product.price)*0.9 %>
+			<%= link_to "Buy", "#" %>
+		</ul>
+		<ul><%= @product.description %>...</ul>
+		<ul>
+			<%= link_to "Back", root_path %>
+			<%= link_to "Edit", edit_product_path(@product.id)  %>
+			<%= link_to "Delete", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %>
+		</ul>
+		<hr>
+
+	<br>
+
+	
+</div>

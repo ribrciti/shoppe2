@@ -1,0 +1,77 @@
+<%= form_for @product do |f| %>
+  <% if @product.errors.any? %>
+	  <h2><% pluralize(@product.errors.count, "error") %> prevented this product from saving</h2>
+	  <ul>
+	  	<% @product.errors.full_messages.each do |msg| %>
+	  		<li><%= msg %></li>
+	  	<% end %>
+	  </ul>
+  <% end %>
+
+  <%= f.label :id %><br />
+  <%= f.text_field :id, size: "2x2" %>
+
+  <br>
+  <br>
+
+  <%= f.label :name, "Rotary Phone Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :sku %>
+  <%= f.text_field :sku %>
+
+  <br>
+  <br>
+
+  <%= f.label :permalink %><br />
+  <%= f.text_field :permalink %>
+
+  <br>
+  <br>
+
+  <%= f.label :description %><br />
+  <%= f.text_area :description, size: "84x10" %>
+
+  <br>
+  <br>
+
+  <%= f.label :Short_description %><br />
+  <%= f.text_area :short_description, size: "84x3" %>
+
+  <br>
+  <br>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight %>
+
+  <br>
+  <br>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  
+
+  <%= f.label :cost_price %>
+  <%= f.number_field :cost_price %>
+
+  <br>
+  <br>
+
+  <%= f.label :featured %><br />
+  <%= f.text_field :featured %>
+
+  <br>
+  <br>
+
+  <%= f.label :category_name %><br />
+  <%= f.text_field :category_name %>
+
+  <br>
+  <br>
+
+  
+  <%= f.submit %>
+  
+<% end -%>
+	

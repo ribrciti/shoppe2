@@ -1,18 +1,21 @@
-<p>Products Index Page</p>
-
 <div id="background">
-	<header>
-		<a href="#" id="logo">Shoppe2 Logo Here</a>
-		<nav>
-			<ul>
-				<li><a href="#">Categories</a></li>
-				<li><a href="#">Sign In</a></li>
-				<li><a href="#">My Cart</a></li>
-			</ul>
-		</nav>
-	</header>
-
-
+		
 	<h2>Your Featured Items</h2>
+	<% @products.each do |product | %>
+
+	<div id="background_image">
+		<ul><%= image_tag "#{product.id}.jpg", size: "75x75" %><strong><%= product.name %> Rotary Phone</strong></ul>
+	</div>	
+		
+		<ul><%= product.short_description %>...</ul>
+		<ul>Item #:  <%= product.sku %>     Sale Price $ <%= (product.price)*0.9 %></ul>
+		<ul>
+			<%= link_to "Buy", "#" %>
+			<%= link_to "More Info", product_path(product.id) %>
+
+		</ul>
+		<hr>
+	<% end %>
+	<br>
 	<a href="#" class="button button_highlight">Button Here</a>
 </div>
