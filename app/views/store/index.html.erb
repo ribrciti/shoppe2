@@ -10,8 +10,8 @@
 		<ul><%= product.short_description %>...</ul>
 		<ul>Item #:  <%= product.sku %>     Sale Price $ <%= number_to_currency((product.price)*0.9) %></ul>
 		<ul>
-			<%= link_to "Buy", "#" %>
-			<%= link_to "More Info", product_path(product.id) %>
+			<%= button_to 'Add to Cart', ordered_items_path(product_id: product) %>
+			<%= button_to "More Info", store_path(product.id) %>
 
 		</ul>
 		<hr>

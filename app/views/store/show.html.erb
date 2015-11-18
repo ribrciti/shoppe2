@@ -13,9 +13,7 @@
 		</ul>
 		<ul><%= @product.description %>...</ul>
 		<ul>
-			<%= link_to "Back", product_path %>
-			<%= link_to "Edit", edit_product_path(@product.id)  %>
-			<%= link_to "Delete", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %>
+			<%= link_to "Back", store_path %>
 		</ul>
 		<hr>
 

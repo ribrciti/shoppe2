@@ -1,0 +1,20 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<h2>Your Shoppe2 Cart</h2>
+<ul>
+<% @cart.ordered_items.each do |item| %>
+
+<li><%= image_tag "#{item.product.id}.jpg", size: "45x45", alt: "##{item.product.id} Photo Missing" %>
+	<%= item.product.name %> Rotary Phone
+	Item #:  <%= item.product.sku %>
+	<%= item.product.short_description %>
+	Sale Price $ <%= (item.product.price)*0.9 %>
+</li>
+		
+	
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>
