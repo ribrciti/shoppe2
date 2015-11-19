@@ -23,6 +23,7 @@ class OrderedItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
+    @product = product
     @ordered_item = @cart.ordered_items.build(product: product)
 
     respond_to do |format|
@@ -61,6 +62,6 @@ class OrderedItemsController < ApplicationController
     end
 
     def ordered_item_params
-      params.require(:line_item).permit(:product_id)
+      params.require(:ordered_item).permit(:product_id)
     end
 end

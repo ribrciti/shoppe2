@@ -1,18 +1,17 @@
 <div id="background">
 		
-	<h2>Your Featured Items</h2>
+	<h2>Your Store Featured Items</h2>
 	<% @products.each do |product | %>
 
 	<div id="background_image">
-		<ul><%= image_tag "#{product.id}.jpg", size: "75x75" %><strong><%= product.name %> Rotary Phone</strong></ul>
+		<ul><%= image_tag "#{product.image_id}", size: "75x75" %><strong><%= product.name %> Rotary Phone</strong></ul>
 	</div>	
 		
 		<ul><%= product.short_description %>...</ul>
-		<ul>Item #:  <%= product.sku %>     Sale Price $ <%= number_to_currency((product.price)*0.9) %></ul>
+		<ul>ID: <%= product.id %> Item #:  <%= product.sku %>     Sale Price $ <%= number_to_currency((product.price)*0.9) %></ul>
 		<ul>
-			<%= button_to 'Add to Cart', ordered_items_path(product_id: product) %>
-			<%= button_to "More Info", store_path(product.id) %>
-
+			<%= link_to "Add To Cart", ordered_items_path(product_id: product), method: :post %>
+			<%= link_to "More Info", store_path(product.id) %>
 		</ul>
 		<hr>
 	<% end %>

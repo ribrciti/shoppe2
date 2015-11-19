@@ -8,6 +8,7 @@ namespace :db do
 
 		Product.populate 15 do | product |
 			product.name = Populator.words(1..3).titleize
+			product.image_id = "#{product.id}.jpg"
 			product.sku = rand(00000..99999)
 			product.permalink = product.name
 			product.description = Populator.sentences(2..10)

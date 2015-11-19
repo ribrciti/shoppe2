@@ -1,18 +1,23 @@
+
+@cart = <%= @cart.inspect %><br>
+@ordered_item =<%= @ordered_item.inspect %><br>
+@cart.ordered_item = <%= @cart.ordered_items.inspect %> <br>
+@ordered_item = <%= @ordered_item.inspect %> <br>
+
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<h2>Your Shoppe2 Cart</h2>
+<h2>Your Pragmatic Cart</h2>
 <ul>
 <% @cart.ordered_items.each do |item| %>
 
 <li><%= image_tag "#{item.product.id}.jpg", size: "45x45", alt: "##{item.product.id} Photo Missing" %>
-	<%= item.product.name %> Rotary Phone
+	<%= item.quantity %> &times;<%= item.product.name %> Rotary Phone
 	Item #:  <%= item.product.sku %>
 	<%= item.product.short_description %>
-	Sale Price $ <%= (item.product.price)*0.9 %>
+	Unit Price $ <%= (item.product.price)*0.9 %>
 </li>
-		
-	
+
 <% end %>
 </ul>
 
