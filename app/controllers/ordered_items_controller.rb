@@ -23,13 +23,12 @@ class OrderedItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @product = product
-    @ordered_item = @cart.ordered_items.build(product: product)
-
+    @ordered_item = @cart.add_product(product.id)
     respond_to do |format|
       if @ordered_item.save
-        format.html { redirect_to @ordered_item.cart, notice: 'Line item was successfully created' }
+        format.html { redirect_to @cart, notice: 'Line item was successfully created!'}
         format.json { render json: @ordered_item, status: :created, location: @ordered_item } 
+      
       else
         format.html { render action: "new" }
         format.json { render json: @ordered_item.errors, status: :unprocessable_entity }

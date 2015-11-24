@@ -1,12 +1,23 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create, :update, :destroy]
 
   def index
     @carts = Cart.all
   end
 
-  def show
+  def show        # private method
+  begin
+    set_cart
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      redirect_to store_url, notice: 'Invalid cart'
+    else
+      respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @cart }
+    end
   end
+end
 
   def new
     @cart = Cart.new
@@ -42,9 +53,12 @@ class CartsController < ApplicationController
   end
 
   def destroy
+    @cart = current_cart
     @cart.destroy
+    #session[:cart_id] = nill
+
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to store_url, notice: 'Your cart is currently empty' }
       format.json { head :no_content }
     end
   end

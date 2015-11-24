@@ -13,3 +13,5 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'populator', '~> 1.0'
 gem 'faker', '~> 1.5'
 gem 'foundation-rails', '~> 5.5', '>= 5.5.3.2'
+gem 'pry', '~> 0.10.3', group: :development 
+gem 'pry-byebug', '~> 3.3', group: :development 

@@ -1,25 +1,21 @@
-
-@cart = <%= @cart.inspect %><br>
-@ordered_item =<%= @ordered_item.inspect %><br>
-@cart.ordered_item = <%= @cart.ordered_items.inspect %> <br>
-@ordered_item = <%= @ordered_item.inspect %> <br>
-
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<h2>Your Pragmatic Cart</h2>
-<ul>
-<% @cart.ordered_items.each do |item| %>
-
-<li><%= image_tag "#{item.product.id}.jpg", size: "45x45", alt: "##{item.product.id} Photo Missing" %>
-	<%= item.quantity %> &times;<%= item.product.name %> Rotary Phone
-	Item #:  <%= item.product.sku %>
-	<%= item.product.short_description %>
-	Unit Price $ <%= (item.product.price)*0.9 %>
-</li>
-
-<% end %>
-</ul>
+<h2>Your Shoppe Cart</h2>
+<table>
+	<% @cart.ordered_items.each do |item| %>
+		<tr>
+			<td><%= image_tag "#{item.product.id}.jpg", size: "45x45", alt: "##{item.product.id} Photo Missing" %></td>
+			<td><%= item.quantity %>&times;<%= item.product.name %> Rotary Phone  Unit Price:  <%= item.product.price %> </td>
+			<td class="item_price">   <%= number_to_currency(item.total_price) %></td>
+		</tr>
+	<% end %>
+	<tr class="total_line">
+		<td colspan="2">Total</td>
+		<td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= link_to 'Back', store_path %>
+<%= link_to 'Empty Cart', cart_path(@cart.id), method: :delete, data: { confirm: "Are you sure?" } %>
