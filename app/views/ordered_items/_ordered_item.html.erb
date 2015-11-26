@@ -1,0 +1,12 @@
+<% if ordered_item == @current_item %>
+	<tr id="current_item">
+<% else %>
+	</tr>
+<% end %>
+		
+		<td><%= ordered_item.quantity %>&times;
+				<%= ordered_item.product.name %> Rotary Phone  Unit Price:  
+				<%= ordered_item.product.price %> 
+		</td>
+		<td class="item_price">   <%= number_to_currency(ordered_item.total_price) %></td>
+	</tr>

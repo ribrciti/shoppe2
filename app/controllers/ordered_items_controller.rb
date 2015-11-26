@@ -26,7 +26,8 @@ class OrderedItemsController < ApplicationController
     @ordered_item = @cart.add_product(product.id)
     respond_to do |format|
       if @ordered_item.save
-        format.html { redirect_to @cart, notice: 'Line item was successfully created!'}
+        format.html { redirect_to store_url}
+        format.js { @current_item = @ordered_item }
         format.json { render json: @ordered_item, status: :created, location: @ordered_item } 
       
       else
