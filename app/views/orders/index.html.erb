@@ -1,0 +1,22 @@
+<h2>Your Orders by Date</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>Order Number is:  <%= order.id %></td>
+        <td>
+        	<%= order.first_name %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
